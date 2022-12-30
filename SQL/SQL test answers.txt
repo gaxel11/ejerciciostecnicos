@@ -1,0 +1,8 @@
+1.SELECT Name FROM AD_Window WHERE AD_Window_ID = '100'
+2.UPDATE AD_WINDOW Name = CONCAT(Name, '--') WHERE AD_Window_ID = '100' //sql server syntax
+3.SELECT * FROM AD_Tab WHERE  AD_Window_ID = '100'
+4.SELECT T.Name AS TabName, F.Name AS FieldName FROM AD_Tab T INNER JOIN AD_Field F ON (T.AD_Tab_ID = F.AD_Tab_ID) WHERE T.AD_Window_ID = '100' ORDER BY TabName, FieldName
+5.SELECT W.Name, COUNT(T.AD_Tab_ID) as NumTabs FROM AD_Window W INNER JOIN AD_Tab T ON AD_Window.AD_Window_ID = AD_Tab.AD_Window_ID GROUP BY AD_Window.Name ORDER BY NumTabs DESC
+6.SELECT W.Name, COUNT(J.AD_Field_ID) as NumFields FROM AD_Window W INNER JOIN (
+SELECT * FROM AD_Tab T INNER JOIN AD_Field F ON T.AD_Tab_ID = F.AD_Tab_ID) J ON W.AD_Window_ID = J.AD_Window_ID GROUP BY W.Name ORDER BY NumFields DESC;
+7.SELECT W.Name FROM AD_Window W INNER JOIN AD_Tab T ON W.AD_Window_ID = T.AD_Window_ID GROUP BY W.Name HAVING COUNT(*) > 5;
