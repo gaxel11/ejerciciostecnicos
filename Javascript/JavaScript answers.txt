@@ -1,0 +1,63 @@
+1. Shows 25, 81, 2 and undefined.
+The output alert(typeof squareOfA) returns undefined because squareOfA is not declared.
+2.
+const data = ["Apple", "Orange", "Banana", "Strawberry", "Grape", "Mango", "Melon", "Pineapple", "Peach", "Peach"];
+const filterByLetterP = data.filter(str => str.includes('p'));
+const getGrape = data.find(str => str === "Grape")
+3.
+const mostrar = (param) => {
+  param();
+};
+const message = () => console.log("Etendo!!!")
+mostrar(message)
+4.
+function isDiagonal(matrix) {
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] !== 0 && i !== j) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+11.The main difference between functional components and class components is the handling of state and lifecycle. Class components have tools to update state, while functional components do not have state but have special functions called 'hooks' to use the main features of React in functional components.
+12. Class component:
+	this.setState({...})
+Functional component:
+const [example, setExample] = useStat(0)
+setExample(...)
+13. It is re-rendered
+14.function List(props) {
+	return (
+		<ul>
+			{props.objects.map((item, index) => (
+				<li key={index}>
+					{item.firstname} {item.lastname} ({item.dni})
+				</li>
+			))}
+		</ul>
+	);
+}
+15.function Component(props) {
+return (
+	<div>
+		<h1>{props.data}</h1>
+	</div>
+	);
+}
+16. The return() is missing
+17. Increases the click counter each time the button is pressed
+18.I would do it using fetch or axios.
+19. To initialize variables, or to execute a code every time a variable is updated.
+20. I would do it in the following way:
+const useCounter = () => {
+    const [counter, setCounter] = useState(0);
+    function setCount(value){
+        setCounter(value)
+    }
+    return {
+        counter,
+        setCount
+    };
+};
