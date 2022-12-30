@@ -1,0 +1,53 @@
+public class App {
+    //Exercise 2
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size of the magic square:");
+        int n = sc.nextInt();
+        if (n % 2 == 0) {
+            System.out.println("The number must be odd");
+            sc.close();
+            return;
+        }
+        int[][] magicSquare = new int[n][n];
+
+        //Initialize the magic square with 0s
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                magicSquare[i][j] = 0;
+            }
+        }
+
+        //Initialize variables
+        int row = 0;
+        int col = n / 2;
+        int num = 1;
+        //Siames method
+        //Fill in the magic square
+        while (num <= n * n) {
+            magicSquare[row][col] = num;
+            num++;
+
+            //Move one space up and right
+            int newRow = (row - 1 + n) % n;
+            int newCol = (col + 1) % n;
+
+            //If the space is already occupied, move one space down
+            if (magicSquare[newRow][newCol] != 0) {
+                newRow = (row + 1) % n;
+            }
+            row = newRow;
+            col = newCol;
+        }
+
+        //Print the magic square
+        System.out.println("The " + n + " order magic square is:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(magicSquare[i][j] + " ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
